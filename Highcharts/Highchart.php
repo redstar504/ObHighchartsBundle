@@ -26,16 +26,7 @@ class Highchart extends AbstractChart implements ChartInterface
             $chartJS = "$(function(){";
         }
         
-        if(isset($this->globalVariable))
-        {
-            $prefix = "window.";
-        }
-        else
-        {
-            $prefix = "var ";
-        }
-        
-        $chartJS .= "\n    " . $prefix . (isset($this->chart->renderTo) ? $this->chart->renderTo : 'chart') . " = new Highcharts.Chart({\n";
+        $chartJS .= "\n    $('#linechart').highcharts({\n";
            
         // Chart Option
         $chartJS .= $this->renderWithJavascriptCallback($this->chart->chart, "chart");
